@@ -4,9 +4,8 @@ import 'dart:convert';
 import 'package:movies/constants.dart';
 import '../models/movie_model.dart';
 
-
 class API {
-  String apiKey = "?api_key=1ec2b364073596f360d1b0933970ece2";
+  String apiKey = "?api_key=";
   String baseUrl = 'https://api.themoviedb.org/3/';
 
   //https://api.themoviedb.org/3/?api_key=1ec2b364073596f360d1b0933970ece2&page=2
@@ -15,11 +14,14 @@ class API {
     dynamic data;
     List<Movie> movies = [];
     var result = await http.get(Uri.parse(baseUrl + path + apiKey + "&$page"));
-    if(result.statusCode == 200) {
+    if (result.statusCode == 200) {
       data = jsonDecode(result.body);
       return HttpResponse.success(data);
     } else {
-      return HttpResponse.fail(statusCode: result.statusCode, data: data, message: result.reasonPhrase!);
+      return HttpResponse.fail(
+          statusCode: result.statusCode,
+          data: data,
+          message: result.reasonPhrase!);
     }
   }
 }
