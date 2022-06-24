@@ -8,8 +8,6 @@ class API {
   String apiKey = "?api_key=";
   String baseUrl = 'https://api.themoviedb.org/3/';
 
-  //https://api.themoviedb.org/3/?api_key=1ec2b364073596f360d1b0933970ece2&page=2
-
   Future<HttpResponse> fetchMovies(String path, String page) async {
     dynamic data;
     List<Movie> movies = [];
