@@ -1,3 +1,4 @@
+import 'genre_model.dart';
 
 class Movie {
   Movie(
@@ -11,7 +12,7 @@ class Movie {
       required this.backdropPath,
       this.belongsToCollection,
       required this.budget,
-     // required this.genres,
+      required this.genres,
       required this.homepage,
       required this.id,
       required this.imdbId,
@@ -31,7 +32,7 @@ class Movie {
   String backdropPath;
   dynamic belongsToCollection;
   int budget;
-  //List<Genre> genres;
+  List<Genre> genres;
   String homepage;
   int id;
   String imdbId;
@@ -52,7 +53,7 @@ class Movie {
         backdropPath: json["backdrop_path"] ?? '',
         belongsToCollection: json["belongs_to_collection"],
         budget: json["budget"] ?? 0,
-        //genres: List<Genre>.from(json["genres"].map((x) => Genre.fromJson(x))),
+        genres: List<Genre>.from(json["genres"].map((x) => Genre.fromJson(x))),
         homepage: json["homepage"] ?? '',
         id: json["id"] ?? '',
         imdbId: json["imdb_id"] ?? '',
@@ -74,6 +75,6 @@ class Movie {
         "backdrop_path": backdropPath,
         "belongs_to_collection": belongsToCollection,
         "budget": budget,
-        //"genres": List<dynamic>.from(genres.map((x) => x.toJson())),
+        "genres": List<dynamic>.from(genres.map((x) => x.toJson())),
       };
 }
